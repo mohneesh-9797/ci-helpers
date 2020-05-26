@@ -827,7 +827,9 @@ fi
 if [[ $SCIKIT_LEARN_VERSION == pre* ]]; then
     $PIP_INSTALL --pre --upgrade --no-deps scikit-learn
 fi
-
+if [[ $PYTEST_VERSION == dev* ]]; then
+    $PIP_INSTALL git+https://github.com/pytest-dev/pytest.git#egg=pytest --upgrade --no-deps
+fi
 # ASTROPY DEV and PRE
 
 # We now install Astropy dev - this has to be done last, otherwise conda might
