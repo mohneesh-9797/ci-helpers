@@ -1,15 +1,11 @@
 # We set the language to c because python isn't supported on the MacOS X nodes
 # on Travis. However, the language ends up being irrelevant anyway, since we
 # install Python ourselves using conda.
-arch:
-    - amd64
-    - arm64
 language: c
 
 os:
     - linux
 
-dist: bionic
 sudo: true
 
 env:
@@ -26,6 +22,9 @@ matrix:
     include:
         # JOB .1
         # pytest pip fallback, conda package for 3.1 is not available for py3.4
+        - arch: arm64
+          os: linux
+          dist: bionic 
         - os: linux
           env: PYTHON_VERSION=3.4 PYTEST_VERSION=3.1
 
